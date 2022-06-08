@@ -28,7 +28,7 @@ with DAG("extract_transform_load_aws",start_date=datetime(2022,1,1),schedule_int
         task_id='download_from_s3',
         python_callable=download_from_s3,
         op_kwargs={
-            'key': file_in_s3
+            'key': file_in_s3,
             'bucket_name': s3_url,
             'local_path': '/Users/jasonweir/airflow-docker/data/'
         }
