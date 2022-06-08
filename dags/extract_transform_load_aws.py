@@ -18,14 +18,14 @@ def download_from_s3(key: str, bucket_name: str, local_path: str) -> str:
     return file_name
 
 def rename_file(ti, new_name: str) -> None:
-    downloaded_file_name = ti.xcom_pull(task_ids=['download_from_s3'])
+    downloaded_file_name = ti.xcom_pull(task_ids=['extract_transform_load_aws'])
     downloaded_file_path = '/'.join(downloaded_file_name[0].split('/')[:-1])
     os.rename(src=downloaded_file_name[0], dst=f"{downloaded_file_path}/{new_name}") 
 
 with DAG("extract_transform_load_aws",start_date=datetime(2022,1,1),schedule_interval="@daily",catchup=False) as dag:
 
-    task_download_from_s3 = PythonOperator(
-        task_id='download_from_s3',
+    extract_transform_load_aws = PythonOperator(
+        task_id='extract_transform_load_aws',
         python_callable=download_from_s3,
         op_kwargs={
             'key': file_in_s3,
