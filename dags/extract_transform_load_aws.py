@@ -42,6 +42,6 @@ with DAG("extract_transform_load_aws",start_date=datetime(2022,1,1),schedule_int
         }
     )
 
-    task_download_from_s3 >> task_rename_file
+    extract_transform_load_aws >> task_rename_file
 
     
