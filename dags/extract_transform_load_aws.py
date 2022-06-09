@@ -7,8 +7,8 @@ from airflow.providers.amazon.aws.hooks.s3 import S3Hook
 import os
 
 #Variables
-s3_url = 's3://jweirtestbucket/OngoingData(excel_files)/'
-file_in_s3 =  'Monthly Sales Report, Supplier filter only_Colgate 2019-12-30.xlsx'
+s3_url = "s3://jweirtestbucket/OngoingData(excel_files)/Monthly Sales Report, Supplier filter only_Colgate 2019-12-30.xlsx"
+file_in_s3 =  "Monthly Sales Report, Supplier filter only_Colgate 2019-12-30.xlsx"
 
 # adding defined functions (will throw these into a container later)
 
